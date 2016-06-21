@@ -22,7 +22,10 @@ var randomFallback = null;
 function random(len) {
     /* node */ if (typeof module !== 'undefined' && module && module['exports'])
         try {
-            return require("crypto")['randomBytes'](len);
+            //replace node with react native
+            var randomBytes = require('react-native-randombytes');
+            return randomBytes(len);
+            // return require("crypto")['randomBytes'](len);
         } catch (e) {}
     /* WCA */ try {
         var a; (self['crypto']||self['msCrypto'])['getRandomValues'](a = new Uint32Array(len));
